@@ -1,0 +1,15 @@
+.offline-block {
+    margin: 0 auto;
+}
+
+.offline-block h2 {
+    font-size: 32px;
+    text-align: center;
+    margin-top: 32px;
+}
+
+.offline-block svg {
+    width: 120px;
+    height: 120px;
+    color: rgb(122, 122, 122);
+}

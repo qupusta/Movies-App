@@ -1,0 +1,29 @@
+.rate-ellipse {
+    display: inline;
+    width: 30px;
+    height: 30px;
+    border: 2px solid;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 50%;
+    font-size: 12px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.nothing {
+    border-color: #D9D9D9;
+}
+
+.bad {
+    border-color: #e94200;
+}
+
+.normal {
+    border-color: #E9D100;
+}
+
+.good {
+    border-color: #71bb10;
+}
