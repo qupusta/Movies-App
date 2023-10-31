@@ -1,1 +1,1 @@
-https://movies-3d3t37aya-maxims-projects-826d87a6.vercel.app/
+https://movies-r0ip5t4x2-maxims-projects-826d87a6.vercel.app/
