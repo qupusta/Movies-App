@@ -8,6 +8,7 @@ import GenreListElem from '../genre-list/genre-list-elem'
 import RateEllipse from '../rate-ellipse/rate-ellipse'
 import Spinner from '../spinner/spinner'
 import './film-card.css'
+import { GenresConsumer } from '../genres-context/genres-context'
 
 export default class FilmCard extends Component {
   convertDate(releaseDate) {
@@ -29,35 +30,49 @@ export default class FilmCard extends Component {
   }
 
   render() {
-    const { title, release_date, overview, genre_ids, vote_average, poster_path, loading } = this.props
+    const {
+      title,
+      release_date,
+      overview,
+      genre_ids,
+      poster_path,
+      loading,
+      guestSessionId,
+      movieId,
+      onChangeRate,
+      rating,
+    } = this.props
     const posterUrl = 'https://image.tmdb.org/t/p/original'
     const poster = posterUrl + poster_path
 
     const convertedDate = this.convertDate(release_date)
 
     const imgPoster = <img className="poster" src={poster} alt={title} />
-    if (loading) {
-      return (
-        <div className="card">
-          <Spinner />
-        </div>
-      )
-    }
-
     return (
-      <div className="card">
-        {poster_path === null ? <Spinner /> : imgPoster}
-        <div className="card-info">
-          <RateEllipse rate={vote_average} />
-          <h2> {title} </h2>
-          <h3>{convertedDate}</h3>
-          <ul className="genre-list">
-            <GenreListElem genre={genre_ids} />
-          </ul>
-          <p>{this.kitcut(overview)}</p>
-          <RateStars rate={vote_average} />
-        </div>
-      </div>
+      <GenresConsumer>
+        {(genres) => {
+          return (
+            <div className="card">
+              {poster_path === null ? <Spinner /> : imgPoster}
+              <div className="card-info">
+                <RateEllipse rate={rating} />
+                <h2> {title} </h2>
+                <h3>{convertedDate}</h3>
+                <ul className="genre-list">
+                  <GenreListElem genreIds={genre_ids} genres={genres} />
+                </ul>
+                <p>{this.kitcut(overview)}</p>
+                <RateStars
+                  rate={rating}
+                  guestSessionId={guestSessionId}
+                  movieId={movieId}
+                  onChangeRate={(id, value) => onChangeRate(id, value)}
+                />
+              </div>
+            </div>
+          )
+        }}
+      </GenresConsumer>
     )
   }
 }

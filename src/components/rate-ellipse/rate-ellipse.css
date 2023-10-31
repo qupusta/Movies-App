@@ -10,14 +10,15 @@
     position: absolute;
     right: 10px;
     top: 10px;
+    border-color:  #E90000;
 }
 
 .nothing {
-    border-color: #D9D9D9;
+    border-color:  #E90000;
 }
 
 .bad {
-    border-color: #e94200;
+    border-color: #E97E00;
 }
 
 .normal {
@@ -25,5 +26,5 @@
 }
 
 .good {
-    border-color: #71bb10;
+    border-color: #66E900;
 }

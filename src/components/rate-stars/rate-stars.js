@@ -1,12 +1,26 @@
 import React, { useState } from 'react'
 import { Rate } from 'antd'
-const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful']
-const RateStars = ({ rate }) => {
-  const [value, setValue] = useState(rate)
+
+import Service from '../../service/service'
+
+const service = new Service()
+
+const RateStars = ({ guestSessionId, movieId, onChangeRate, rate }) => {
+  const [value, setValue] = useState(0)
 
   return (
     <span>
-      <Rate allowHalf tooltips={desc} onChange={setValue} value={value / 2} />
+      <Rate
+        style={{ fontSize: 16, textWrap: 'nowrap' }}
+        count={10}
+        allowHalf
+        onChange={(value) => {
+          setValue(value)
+          service.postRate(guestSessionId, movieId, value)
+          onChangeRate(movieId, value)
+        }}
+        value={rate}
+      />
     </span>
   )
 }

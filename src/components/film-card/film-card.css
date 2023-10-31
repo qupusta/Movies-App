@@ -6,7 +6,7 @@
 }
 
 .card-info {
-    height: 340px;
+    height: 390px;
     padding-left: 15px;
     display: flex;
     flex-direction: column;
@@ -14,8 +14,8 @@
 }
 
 .card img {
-    max-width: 45%;
-    min-width: 45%;
+    max-width: 390px;
+    max-width: 195px;
 }
 
 .card-list {
